@@ -6,7 +6,7 @@ describe("Employee", () => {
         expect(example.getName()).toBe("Pepe");
     })
 
-    test("Getting the correct id.", () => {
+    test("Getting the correct Id.", () => {
         let example = new Employee("Pepe", 5, "pepe@gmail.com");
         expect(example.getId()).toBe(5);
     })
