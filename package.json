@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/Eli-coding/team-profile-generator/issues"
   },
-  "homepage": "https://github.com/Eli-coding/team-profile-generator#readme"
+  "homepage": "https://github.com/Eli-coding/team-profile-generator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.0"
+  }
 }
