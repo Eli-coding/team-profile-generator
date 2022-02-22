@@ -1,12 +1,132 @@
+const employee = require("./lib/Employee.js");
+const manager = require("./lib/Manager.js");
+const engineer = require("./lib/Engineer.js");
+const intern = require("./lib/Intern.js");
 const inquirer = require("inquirer");
-const employee = require ("./lib/Employee.js");
-const manager = require ("./lib/Manager.js");
-const engineer = require ("./lib/Emgineer.js");
-const intern = require ("./lib/Intern.js"); 
+const fs = require("fs");
+const path = require ('path') //wth?
+
+function start (){
 
 
-const generateHTML = ({name,role,id,email,offNumber,gitHub,school}) =>
-`<!DOCTYPE html>
+}
+
+function  questionsManager () {
+
+    inquirer.prompt([
+    {
+        type: "input",
+        name: "managerName",
+        message: "What is the team manager's name?"
+    },
+    {
+        type: "input",
+        name: "employeeId",
+        message: "What is the team manager's employee ID?"
+
+    },
+    {
+        type: "input",
+        name: "email",
+        message: "What is the team manager's email?"
+
+    },
+    {
+        type: "input",
+        name: "officeNumber",
+        message: "What is the team manager's office number?"
+    }
+   // {
+       // type: "checkbox",
+        //name: "addteam",
+        //message: "Do you to add an engineer or an intern or to finish building my team?",
+        //choices: ['add Engineer ', 'add Intern', 'The team is complete']
+    //},
+
+]).then(data => {
+
+const manager = new Manager (data.name, data.id, data.email,data.officeNumber);
+console.log(manager);
+teamMembers.push(manager);
+addTeamMate();
+
+
+})
+
+}
+
+const promptEngineer = [
+
+    {
+
+        type: "input",
+        name: "engineerName",
+        message: "What is the engineer's name?"
+    },
+    {
+        type: "input",
+        name: "employeeId",
+        message: "What is the engineer's employee ID?"
+
+    },
+    {
+        type: "input",
+        name: "email",
+        message: "What is the  engineer's email?"
+
+    },
+    {
+        type: "input",
+        name: "gitHub",
+        message: "What is the  engineer's gitHub?"
+    },
+
+
+]
+
+const promptIntern = [
+
+    {
+
+        type: "input",
+        name: "internName",
+        message: "What is the intern's name?"
+    },
+    {
+        type: "input",
+        name: "employeeId",
+        message: "What is the intern's employee ID?"
+
+    },
+    {
+        type: "input",
+        name: "email",
+        message: "What is the  intern's email?"
+
+    },
+    {
+        type: "input",
+        name: "school",
+        message: "What is the  intern's school?"
+    },
+
+
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+const generateHTML = ({ name, role, id, email, officeNumber, gitHub, school }) =>
+    `<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -37,7 +157,7 @@ const generateHTML = ({name,role,id,email,offNumber,gitHub,school}) =>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${id} </li>
-                    <li class="list-group-item">Email: <a href="${email}" class="card-link">email</a> </li>
+                    <li class="list-group-item">Email:<a href="mailto: ${email}" class="card-link">email</a> </li>
                     <li class="list-group-item">Office Number: ${officeNumber}</a></li>
                 </ul>
             </div>
@@ -53,7 +173,7 @@ const generateHTML = ({name,role,id,email,offNumber,gitHub,school}) =>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID:${id}</li>
-                    <li class="list-group-item">Email: <a href="${email}" class="card-link">email</a> </li>
+                    <li class="list-group-item">Email:<a href="mailto: ${email}" class="card-link">email</a> </li>
                     <li class="list-group-item">GitHub: <a href="${gitHub}" class="card-link">GitHub</a></li>
                 </ul>
             </div>
@@ -69,7 +189,7 @@ const generateHTML = ({name,role,id,email,offNumber,gitHub,school}) =>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID:${id}</li>
-                <li class="list-group-item">Email: <a href="${email}" class="card-link">email</a> </li>
+                <li class="list-group-item">Email:<a href="mailto: ${email}" class="card-link">email</a> </li>
                 <li class="list-group-item">GitHub: <a href="${gitHub}" class="card-link">GitHub</a></li>
             </ul>
         </div>
@@ -86,7 +206,7 @@ const generateHTML = ({name,role,id,email,offNumber,gitHub,school}) =>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${id}</li>
-                <li class="list-group-item">Email: <a href="${email}" class="card-link">email</a> </li>
+                <li class="list-group-item">Email:<a href="mailto: ${email}" class="card-link">email</a> </li>
                 <li class="list-group-item">GitHub: <a href="${gitHub}" class="card-link">GitHub</a></li>
             </ul>
         </div>
@@ -101,7 +221,7 @@ const generateHTML = ({name,role,id,email,offNumber,gitHub,school}) =>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID:${id}</li>
-                <li class="list-group-item">Email: <a href="${email}" class="card-link">email</a> </li>
+                <li class="list-group-item">Email:<a href="mailto: ${email}" class="card-link">email</a> </li>
                 <li class="list-group-item">School: ${school}</li>
             </ul>
         </div>
