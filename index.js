@@ -37,7 +37,7 @@ function questionsManager() {
     ]).then(data => {
 
         const manager = new Manager(data.managerName, data.employeeId, data.email, data.officeNumber);
-        console.log(manager);
+       // console.log(manager);
         teamMembers.push(manager);
         addTeamMate();
 
@@ -109,7 +109,7 @@ function engineerProfile() {
     ]).then(data => {
 
         const engineer = new Engineer(data.engineerName, data.employeeId, data.email, data.gitHub);
-        console.log(engineer);
+        //console.log(engineer);
         teamMembers.push(engineer);
         addTeamMate();
 
@@ -148,7 +148,7 @@ function internProfile() {
     ]).then(data => {
 
         const intern = new Intern(data.internName, data.employeeId, data.email, data.school);
-        console.log(intern);
+       // console.log(intern);
         teamMembers.push(intern);
         addTeamMate();
     })
@@ -167,7 +167,7 @@ questionsManager();
 function generateHTML(arr) {
     let HTMLarr = [];
     for (i = 0; i < arr.length; i++) {
-        console.log(arr[i].getRole());
+       // console.log(arr[i].getRole());
 
         if (arr[i].getRole() === "Manager") {
             HTMLarr.push(` 
@@ -258,26 +258,24 @@ function generateHTML(arr) {
                 ${HTMLarr};
     
     
-            
-        //add arrayHtml to html 
-    
-       
-            
-      
- 
-    
-        
- 
-    
-    
-    
-    
-    
     </body>
     
     </html>
     `
 }
 
+
+
+
+function makeFile(data) {
+    fs.writeFile("pageBones.html", data, function(err) {
+       if(err){
+         console.log(Error);
+       }
+       else{
+         console.log("Your file has been created.")
+       }
+    })
+  }
 
 //last step generate file HW9 as reference 
