@@ -37,7 +37,7 @@ function questionsManager() {
     ]).then(data => {
 
         const manager = new Manager(data.managerName, data.employeeId, data.email, data.officeNumber);
-       // console.log(manager);
+        // console.log(manager);
         teamMembers.push(manager);
         addTeamMate();
 
@@ -71,7 +71,7 @@ function addTeamMate() {
 
         } else {
 
-            generateHTML(teamMembers);
+            makeFile(teamMembers);
         }
 
 
@@ -148,7 +148,7 @@ function internProfile() {
     ]).then(data => {
 
         const intern = new Intern(data.internName, data.employeeId, data.email, data.school);
-       // console.log(intern);
+        // console.log(intern);
         teamMembers.push(intern);
         addTeamMate();
     })
@@ -167,67 +167,67 @@ questionsManager();
 function generateHTML(arr) {
     let HTMLarr = [];
     for (i = 0; i < arr.length; i++) {
-       // console.log(arr[i].getRole());
+        // console.log(arr[i].getRole());
 
         if (arr[i].getRole() === "Manager") {
             HTMLarr.push(` 
-            <div class="row p-3 m-3">
-            <div class="col-sm-4">
-            <div class="col-sm-4">
-            <div class="card text-white bg-info" style="width: 18rem;">
+        <div class="row p-3 m-3">
+            <div class="col-sm-3">
+              <div class="card text-white bg-info" style="width: 18rem;">
 
                 <div class="card-body">
                     <h2 class="card-title">${arr[i].getName()}</h2>
-                    <h3 class="card-text">${arr[i].getRole()}</h3>
+                    <h3 class="card-text">☕${arr[i].getRole()}</h3>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${arr[i].getId()} </li>
-                    <li class="list-group-item">Email:<a href="mailto: ${arr[i].getEmail()} class="card-link">email</a> </li>
+                    <li class="list-group-item">Email:<a href="mailto: ${arr[i].getEmail()} class="card-link">${arr[i].getEmail()}</a></li>
                     <li class="list-group-item">Office Number: ${arr[i].getOfficeNumber()}</a></li>
                 </ul>
-            </div>
-        </div>`)
+               </div>
+            
+            </div>`)
 
         } else if (arr[i].getRole() === "Engineer") {
-            HTMLarr.push(` <div class="col-sm-3">
-             <div class="col-sm-4">
-            <div class="card text-white bg-primary" style="width: 18rem;">
+            HTMLarr.push(` 
+             <div class="col-sm-3">
+               <div class="card text-white bg-primary" style="width: 18rem;">
 
                 <div class="card-body">
                     <h2 class="card-title">${arr[i].getName()}</h2>
-                    <h3 class="card-text">${arr[i].getRole()}}</h3>
+                    <h3 class="card-text">⚙️ ${arr[i].getRole()} </h3>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID:${arr[i].getId()}</li>
-                    <li class="list-group-item">Email:<a href="mailto: ${arr[i].getEmail()} class="card-link">email</a> </li>
-                    <li class="list-group-item">GitHub: <a href=${arr[i].getGithub()} class="card-link">GitHub</a></li>
+                    <li class="list-group-item">ID: ${arr[i].getId()}</li>
+                    <li class="list-group-item">Email:<a href="mailto: ${arr[i].getEmail()}"m class="card-link"> ${arr[i].getEmail()}</a></li>
+                    <li class="list-group-item">GitHub:<a href="${arr[i].getGithub()}" class="card-link"> ${arr[i].getGithub()}</a></li>
                 </ul>
+                </div>
             </div>
-            </div>
-        </div>`)
+        `)
 
 
 
         } else {
             HTMLarr.push(`
         
-            <div class="col-sm-3">
-            <div class="card text-white bg-success" style="width: 18rem;">
+       <div class="col-sm-3">
+            <div class="card text-white bg-warning" style="width: 18rem;">
     
                 <div class="card-body">
                     <h2 class="card-title">${arr[i].getName()}</h2>
-                    <h3 class="card-text">${arr[i].getRole()}</h3>
+                    <h3 class="card-text">🎓${arr[i].getRole()}</h3>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID:${arr[i].getId()}</li>
-                    <li class="list-group-item">Email:${arr[i].getEmail()}<a href="mailto: ${arr[i].getEmail()}" class="card-link">email</a> </li>
-                    <li class="list-group-item">School: ${arr[i].getSchool()}" </li>
+                    <li class="list-group-item">ID: ${arr[i].getId()}</li>
+                    <li class="list-group-item">Email: <a href="mailto: ${arr[i].getEmail()}" class="card-link"> ${arr[i].getEmail()}</a> </li>
+                    <li class="list-group-item">School: ${arr[i].getSchool()}</li>
                 </ul>
             </div>
         </div>    
         
-        </div>    
-        </div>`)  // verify HTML is good 
+           
+        </div>`)  
 
 
         }
@@ -256,6 +256,7 @@ function generateHTML(arr) {
     
         
                 ${HTMLarr};
+            
     
     
     </body>
@@ -267,15 +268,22 @@ function generateHTML(arr) {
 
 
 
-function makeFile(data) {
-    fs.writeFile("pageBones.html", data, function(err) {
-       if(err){
-         console.log(Error);
-       }
-       else{
-         console.log("Your file has been created.")
-       }
-    })
-  }
+// function makeFile(data) {
 
+//     function makeFile(data) {
+//         fs.writeFileSync("pageBones.html", generateHTML(data), "utf-8");
+//       }
+//     ///fs.writeFile("pageBones.html", data, function(err) {
+//       // if(err){
+//        //  console.log(Error);
+//        //}
+//        //else{
+//        //  console.log("Your file has been created.")
+//      //  }
+//    // })
+//   }
+function makeFile(data) {
+    fs.writeFileSync("pageBones.html", generateHTML(data), "utf-8");
+    console.log("File created.")
+}
 //last step generate file HW9 as reference 
