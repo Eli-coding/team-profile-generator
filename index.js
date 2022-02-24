@@ -200,7 +200,7 @@ function generateHTML(arr) {
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${arr[i].getId()}</li>
                     <li class="list-group-item">Email:<a href="mailto: ${arr[i].getEmail()}"m class="card-link"> ${arr[i].getEmail()}</a></li>
-                    <li class="list-group-item">GitHub:<a href="${arr[i].getGithub()}" class="card-link"> ${arr[i].getGithub()}</a></li>
+                    <li class="list-group-item">GitHub:<a href="https://github.com/${arr[i].getGithub()}" class="card-link"> ${arr[i].getGithub()}</a></li>
                 </ul>
                 </div>
             </div>
@@ -255,7 +255,7 @@ function generateHTML(arr) {
     
     
         
-                ${HTMLarr};
+                ${HTMLarr.join("")};
             
     
     
