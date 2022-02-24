@@ -21,7 +21,7 @@ npm i
 
 ## Usage
 
-You can freely use it.
+Answer the questions in the command line to generate HTML file. 
 
 ## Licenses
 
